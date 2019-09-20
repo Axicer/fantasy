@@ -2,10 +2,10 @@ package attaque;
 
 public abstract class Pouvoir extends ForceDeCombat{
 
-	private int nbUtilisationPouvoir;
-	private int nbUtilisationPouvoirInitial;
+	private double nbUtilisationPouvoir;
+	private double nbUtilisationPouvoirInitial;
 	
-	public Pouvoir(int pointDeDegat, String nom, int nbUtilisationPouvoir) {
+	public Pouvoir(int pointDeDegat, String nom, double nbUtilisationPouvoir) {
 		super(pointDeDegat, nom);
 		this.nbUtilisationPouvoir = nbUtilisationPouvoir;
 		this.nbUtilisationPouvoirInitial = nbUtilisationPouvoir;

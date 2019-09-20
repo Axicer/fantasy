@@ -2,8 +2,8 @@ package attaque;
 
 public class Morsure extends Tranchant{
 
-	public Morsure(int pointDeDegat, int nbUtilisationPouvoir) {
-		super(pointDeDegat, "Morsure", nbUtilisationPouvoir);
+	public Morsure(int pointDeDegat) {
+		super(pointDeDegat, "Morsure", Double.POSITIVE_INFINITY);
 	}
 
 }

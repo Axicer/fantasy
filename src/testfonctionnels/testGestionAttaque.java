@@ -11,9 +11,15 @@ import protagoniste.ZoneDeCombat;
 public class testGestionAttaque {
 	
 	public static void main(String[] args) {
-		Monstre<Feu> m = new Monstre<>("dragotenebre", 200, ZoneDeCombat.aerien, Domaine.feu, new Lave(42), new Eclair(69), new BouleDeFeu(666));
+		Monstre<Feu> m = new Monstre<>("dragotenebre", 200, ZoneDeCombat.aerien, Domaine.feu, new Lave(5), new Eclair(5), new BouleDeFeu(5));
 		
 		System.out.println(m);
+		
+		m.entreEnCombat();
+		for(int i = 0 ; i < 10 ; i++) {
+			Feu attaque = m.attaque();
+			System.out.println(attaque);			
+		}
 	}
 
 }
