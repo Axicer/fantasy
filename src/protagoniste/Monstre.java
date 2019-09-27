@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 import attaque.Pouvoir;
+import bataille.Bataille;
 
 public class Monstre<U extends Pouvoir> extends EtreVivant{
 
@@ -28,6 +29,17 @@ public class Monstre<U extends Pouvoir> extends EtreVivant{
 
 	public Domaine getDomaine() {
 		return domaine;
+	}
+	
+	@Override
+	public void rejointBataille(Bataille bataille) {
+		super.rejointBataille(bataille);
+		bataille.ajouter(this);
+	}
+	
+	@Override
+	public void mourir() {
+		bataille.eliminer(this);
 	}
 
 	@Override
