@@ -13,6 +13,7 @@ import attaque.Tornade;
 import attaque.Tranchant;
 import bataille.Bataille;
 import bataille.Camp;
+import livre.AideEcrivain;
 //import livre.AideEcrivain;
 import protagoniste.Domaine;
 import protagoniste.Heros;
@@ -66,8 +67,8 @@ public class TestGestionProtagonistes {
 //		[Monstre [getNom()=dragotenebre, attaques=[ForceDeCombat [nom=une boule de feu, pointDeDegat=20], ForceDeCombat [nom=un jet de lave, pointDeDegat=80], ForceDeCombat [nom=un éclair, pointDeDegat=50]], zoneDeCombat=AERIEN, getForceDeVie()=200], Monstre [getNom()=vampirien, attaques=[ForceDeCombat [nom=une morsure, pointDeDegat=10]], zoneDeCombat=AERIEN, getForceDeVie()=10], Monstre [getNom()=marinsangant, attaques=[ForceDeCombat [nom=un pic de glace, pointDeDegat=50], ForceDeCombat [nom=une tornade, pointDeDegat=50]], zoneDeCombat=AQUATIQUE, getForceDeVie()=150], Monstre [getNom()=guillotimort, attaques=[ForceDeCombat [nom=une lame d'acier, pointDeDegat=50], ForceDeCombat [nom=un coup de griffe, pointDeDegat=20]], zoneDeCombat=TERRESTRE, getForceDeVie()=80]]
 
 		
-//		AideEcrivain aideEcrivain = new AideEcrivain(bataille);
-//		System.out.println("\nvisualisation des forces humaines :\n" + aideEcrivain.visualiserForcesHumaines());
+		AideEcrivain aideEcrivain = new AideEcrivain(bataille);
+		System.out.println("\nvisualisation des forces humaines :\n" + aideEcrivain.visualiserForcesHumaines());
 		
 //		Resultat attendu
 //		visualisation des forces humaines :
