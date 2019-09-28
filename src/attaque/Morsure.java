@@ -1,9 +1,11 @@
 package attaque;
 
-public class Morsure extends Tranchant{
+public class Morsure extends TranchantInfini{
 
+	public static final String NAME = "Morsure";
+	
 	public Morsure(int pointDeDegat) {
-		super(pointDeDegat, "Morsure", Double.POSITIVE_INFINITY);
+		super(pointDeDegat, NAME);
 	}
 
 }

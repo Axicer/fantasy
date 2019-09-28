@@ -14,7 +14,6 @@ import attaque.Tranchant;
 import bataille.Bataille;
 import bataille.Camp;
 import livre.AideEcrivain;
-//import livre.AideEcrivain;
 import protagoniste.Domaine;
 import protagoniste.Heros;
 import protagoniste.Homme;

@@ -2,10 +2,13 @@ package attaque;
 
 public class Arc extends Arme{
 
+	public static final int DEGATS = 50;
+	public static final String NAME = "Arc";
+	
 	private int nbFlechesRestantes;
 	
 	public Arc(int nbFlechesRestantes) {
-		super(50, "Arc");
+		super(DEGATS, NAME);
 		this.nbFlechesRestantes = nbFlechesRestantes;
 	}
 	

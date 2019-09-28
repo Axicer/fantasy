@@ -16,9 +16,9 @@ public class testGestionAttaque {
 		System.out.println(m);
 		
 		m.entreEnCombat();
-		for(int i = 0 ; i < 10 ; i++) {
+		for(int i = 0 ; i < 15 ; i++) {
 			Feu attaque = m.attaque();
-			System.out.println(attaque);			
+			System.out.println(attaque);
 		}
 	}
 

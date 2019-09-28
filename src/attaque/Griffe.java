@@ -1,9 +1,12 @@
 package attaque;
 
-public class Griffe extends Tranchant {
+public class Griffe extends TranchantInfini {
 
+	public static final int DEGATS = 20;
+	public static final String NAME = "Griffe";
+	
 	public Griffe() {
-		super(20, "griffe", Double.POSITIVE_INFINITY);
+		super(DEGATS, NAME);
 	}
 
 }

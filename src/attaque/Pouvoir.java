@@ -5,7 +5,7 @@ public abstract class Pouvoir extends ForceDeCombat{
 	private double nbUtilisationPouvoir;
 	private double nbUtilisationPouvoirInitial;
 	
-	public Pouvoir(int pointDeDegat, String nom, double nbUtilisationPouvoir) {
+	public Pouvoir(int pointDeDegat, String nom, int nbUtilisationPouvoir) {
 		super(pointDeDegat, nom);
 		this.nbUtilisationPouvoir = nbUtilisationPouvoir;
 		this.nbUtilisationPouvoirInitial = nbUtilisationPouvoir;
@@ -20,14 +20,18 @@ public abstract class Pouvoir extends ForceDeCombat{
 	public int utiliser() {
 		if(!isOperationnel())return 0;
 		
+		int degats = 0;
+		
 		nbUtilisationPouvoir--;
 		if(nbUtilisationPouvoir == 0) {
 			setOperationnel(false);
-			return getPointDeDegat();
+			degats = getPointDeDegat();
 		}else if(nbUtilisationPouvoir < 0){
-			return 0;
+			degats = 0;
 		}else {
-			return getPointDeDegat();
+			degats = getPointDeDegat();
 		}
+		
+		return degats;
 	}
 }
