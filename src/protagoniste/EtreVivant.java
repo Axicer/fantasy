@@ -2,7 +2,7 @@ package protagoniste;
 
 import bataille.Bataille;
 
-public abstract class EtreVivant {
+public abstract class EtreVivant implements Comparable<EtreVivant> {
 
 	private String nom;
 	private int forceDeVie;
@@ -57,5 +57,8 @@ public abstract class EtreVivant {
 		return true;
 	}
 	
-	
+	@Override
+	public int compareTo(EtreVivant o) {
+		return this.nom.compareTo(o.getNom());
+	}
 }

@@ -72,6 +72,8 @@ public class TestGestionProtagonistes {
 //		Resultat attendu
 //		visualisation des forces humaines :
 //		[Heros [nom=Arthur, forceDeVie=100], Heros [nom=Archibald, forceDeVie=100], Homme [nom=Thomas, forceDeVie=70], Homme [nom=Louis, forceDeVie=70], Homme [nom=Alain, forceDeVie=70]]
-    }
+
+		System.out.println(aideEcrivain.ordreMonstreZone());
+	}
 
 }
