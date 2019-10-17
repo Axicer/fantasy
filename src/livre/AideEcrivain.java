@@ -9,8 +9,6 @@ import java.util.NavigableSet;
 import java.util.TreeSet;
 
 import attaque.Feu;
-import attaque.Glace;
-import attaque.Tranchant;
 import bataille.Bataille;
 import protagoniste.Domaine;
 import protagoniste.Heros;
@@ -42,9 +40,9 @@ public class AideEcrivain {
 				};
 			});
 	
-	private NavigableSet<Monstre<Feu>> monstresDeFeu = new TreeSet<>();
-	private NavigableSet<Monstre<Glace>> monstresDeGlace = new TreeSet<>();
-	private NavigableSet<Monstre<Tranchant>> monstresTranchant = new TreeSet<>();
+	private NavigableSet<Monstre<?>> monstresDeFeu = new TreeSet<>();
+	private NavigableSet<Monstre<?>> monstresDeGlace = new TreeSet<>();
+	private NavigableSet<Monstre<?>> monstresTranchant = new TreeSet<>();
 	
 	public AideEcrivain(Bataille bataille) {
 		this.bataille = bataille;
@@ -98,15 +96,15 @@ public class AideEcrivain {
 		return builder.toString();
 	}
 	
-	public NavigableSet<Monstre<Feu>> getMonstresDeFeu() {
+	public NavigableSet<Monstre<?>> getMonstresDeFeu() {
 		return monstresDeFeu;
 	}
 
-	public NavigableSet<Monstre<Glace>> getMonstresDeGlace() {
+	public NavigableSet<Monstre<?>> getMonstresDeGlace() {
 		return monstresDeGlace;
 	}
 
-	public NavigableSet<Monstre<Tranchant>> getMonstresTranchant() {
+	public NavigableSet<Monstre<?>> getMonstresTranchant() {
 		return monstresTranchant;
 	}
 
@@ -172,5 +170,34 @@ public class AideEcrivain {
 		}
 		builder.append("\n");
 		return builder.toString();
+	}
+	
+	public Monstre<?> firstMonstreDomaine(Domaine d){
+		updateMonstreDomaine();
+		Monstre<?> monstre = null;
+		boolean trouve = false;
+		for(Iterator<Monstre<?>> it = monstreDomaineSet.iterator() ; it.hasNext() && !trouve;) {
+			Monstre<?> m = it.next();
+			if(m.getDomaine().equals(d)) {
+				monstre = m;
+				trouve = true;
+			}
+		}
+		return monstre;
+	}
+
+	@SuppressWarnings("unchecked")
+	public void initMonstresDeFeu() {
+		updateMonstreDomaine();
+		Monstre<?> firstGlace = firstMonstreDomaine(Domaine.GLACE);
+		boolean trouve = false;
+		for(Iterator<Monstre<?>> it = monstreDomaineSet.iterator() ; it.hasNext() && !trouve;) {
+			Monstre<?> m = it.next();			
+			if(!m.equals(firstGlace)) {
+				monstresDeFeu.add((Monstre<Feu>)m);				
+			}else {
+				trouve = true;
+			}
+		}
 	}
 }
