@@ -63,7 +63,8 @@ public class EquivalenceEtreVivant {
     assertFalse(ev2.equals(ev1));
   }
 
-  @Test
+  @SuppressWarnings("unchecked")
+@Test
   public void test2MonstresDeNomsDifferentsNeSontPasEquivalents() {
     EtreVivant ev1 = new Monstre("Fred", 0, null, null, null);
     EtreVivant ev2 = new Monstre("Fredo", 0, null, null, null);

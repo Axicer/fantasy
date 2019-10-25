@@ -22,7 +22,7 @@ public class AideEcrivain {
 	private static final int COMPARATOR_ZONE_WEIGHT = 100;
 	
 	private Bataille bataille;
-	private NavigableSet<Monstre<?>> monstreDomaineSet = new TreeSet<Monstre<?>>(
+	private NavigableSet<Monstre<?>> monstresDomaineSet = new TreeSet<Monstre<?>>(
 			new Comparator<Monstre<?>>() {
 				public int compare(Monstre<?> o1, Monstre<?> o2) {
 					int comparaison = o1.getDomaine().compareTo(o2.getDomaine());
@@ -111,7 +111,7 @@ public class AideEcrivain {
 
 	public void updateMonstreDomaine() {
 		for(Monstre<?> m : this.bataille.getCampMonstres()) {
-			monstreDomaineSet.add(m);
+			monstresDomaineSet.add(m);
 		}
 	}
 	
@@ -126,7 +126,7 @@ public class AideEcrivain {
 		StringBuilder builder = new StringBuilder();
 		Domaine currentDomaine = null;
 		boolean first = true;
-		for(Iterator<Monstre<?>> it = monstreDomaineSet.iterator() ; it.hasNext() ;) {
+		for(Iterator<Monstre<?>> it = monstresDomaineSet.iterator() ; it.hasNext() ;) {
 			Monstre<?> m = it.next();
 			if(currentDomaine != m.getDomaine()) {
 				currentDomaine = m.getDomaine();
@@ -177,7 +177,7 @@ public class AideEcrivain {
 		updateMonstreDomaine();
 		Monstre<?> monstre = null;
 		boolean trouve = false;
-		for(Iterator<Monstre<?>> it = monstreDomaineSet.iterator() ; it.hasNext() && !trouve;) {
+		for(Iterator<Monstre<?>> it = monstresDomaineSet.iterator() ; it.hasNext() && !trouve;) {
 			Monstre<?> m = it.next();
 			if(m.getDomaine().equals(d)) {
 				monstre = m;
@@ -192,7 +192,7 @@ public class AideEcrivain {
 		updateMonstreDomaine();
 		Monstre<?> firstGlace = firstMonstreDomaine(Domaine.GLACE);
 		boolean trouve = false;
-		for(Iterator<Monstre<?>> it = monstreDomaineSet.iterator() ; it.hasNext() && !trouve;) {
+		for(Iterator<Monstre<?>> it = monstresDomaineSet.iterator() ; it.hasNext() && !trouve;) {
 			Monstre<?> m = it.next();			
 			if(!m.equals(firstGlace)) {
 				monstresDeFeu.add((Monstre<Feu>)m);				
@@ -207,7 +207,7 @@ public class AideEcrivain {
 		updateMonstreDomaine();
 		Monstre<?> firstTranchant = firstMonstreDomaine(Domaine.TRANCHANT);
 		boolean trouve = false;
-		for(Iterator<Monstre<?>> it = monstreDomaineSet.iterator() ; it.hasNext() && !trouve;) {
+		for(Iterator<Monstre<?>> it = monstresDomaineSet.iterator() ; it.hasNext() && !trouve;) {
 			Monstre<?> m = it.next();			
 			if((m.getDomaine() == Domaine.GLACE)) {
 				monstresDeGlace.add((Monstre<Glace>)m);				
@@ -219,7 +219,7 @@ public class AideEcrivain {
 	public void initMonstresTranchants() {
 		updateMonstreDomaine();
 		boolean trouve = false;
-		for(Iterator<Monstre<?>> it = monstreDomaineSet.iterator() ; it.hasNext() && !trouve;) {
+		for(Iterator<Monstre<?>> it = monstresDomaineSet.iterator() ; it.hasNext() && !trouve;) {
 			Monstre<?> m = it.next();			
 			if((m.getDomaine() == Domaine.TRANCHANT)) {
 				monstresDeGlace.add((Monstre<Glace>)m);				
