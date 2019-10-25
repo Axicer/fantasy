@@ -9,6 +9,7 @@ import java.util.NavigableSet;
 import java.util.TreeSet;
 
 import attaque.Feu;
+import attaque.Glace;
 import bataille.Bataille;
 import protagoniste.Domaine;
 import protagoniste.Heros;
@@ -197,6 +198,31 @@ public class AideEcrivain {
 				monstresDeFeu.add((Monstre<Feu>)m);				
 			}else {
 				trouve = true;
+			}
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void initMonstresDeGlace() {
+		updateMonstreDomaine();
+		Monstre<?> firstTranchant = firstMonstreDomaine(Domaine.TRANCHANT);
+		boolean trouve = false;
+		for(Iterator<Monstre<?>> it = monstreDomaineSet.iterator() ; it.hasNext() && !trouve;) {
+			Monstre<?> m = it.next();			
+			if((m.getDomaine() == Domaine.GLACE)) {
+				monstresDeGlace.add((Monstre<Glace>)m);				
+			} else if (m == firstTranchant) trouve = true;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void initMonstresTranchants() {
+		updateMonstreDomaine();
+		boolean trouve = false;
+		for(Iterator<Monstre<?>> it = monstreDomaineSet.iterator() ; it.hasNext() && !trouve;) {
+			Monstre<?> m = it.next();			
+			if((m.getDomaine() == Domaine.TRANCHANT)) {
+				monstresDeGlace.add((Monstre<Glace>)m);				
 			}
 		}
 	}

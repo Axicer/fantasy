@@ -82,6 +82,8 @@ public class TestGestionProtagonistes {
 		// System.out.println(aideEcrivain.ordreMonstreZone());
 
 		aideEcrivain.initMonstresDeFeu();
+		aideEcrivain.initMonstresDeGlace();
+		aideEcrivain.initMonstresTranchants();
 
 		Monstre<Glace> givrogolem = new Monstre<>("givrogolem", 200, ZoneDeCombat.TERRESTRE, Domaine.GLACE,
 				new PicsDeGlace(10), new Tornade(1));
@@ -90,6 +92,15 @@ public class TestGestionProtagonistes {
 		NavigableSet<Monstre<?>> monstres = aideEcrivain.getMonstresDeFeu();
 		String affichage = affichageMonstres(monstres);
 		System.out.println("\nmonstres de feu :\n" + affichage);
+
+		monstres = aideEcrivain.getMonstresDeGlace();
+		affichage = affichageMonstres(monstres);
+		System.out.println("\nmonstres de glace :\n" + affichage);
+
+
+		monstres = aideEcrivain.getMonstresTranchant();
+		affichage = affichageMonstres(monstres);
+		System.out.println("\nmonstres tranchants :\n" + affichage);
 	}
 
 	public static String affichageMonstres(NavigableSet<Monstre<?>> set) {
