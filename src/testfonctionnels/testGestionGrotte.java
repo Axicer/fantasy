@@ -55,6 +55,8 @@ public class testGestionGrotte {
 		grotte.configurerAcces(8, 5, 7, 9);
 		grotte.configurerAcces(9, 4, 8);
 		
+		grotte.setNumeroSalleDecisive(9);
+		
 		System.out.println("plan de la grotte :\n"+grotte.afficherPlanGrotte());
 		
 		System.out.println("\nparcours de la grotte");

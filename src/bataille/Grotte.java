@@ -84,7 +84,7 @@ public class Grotte {
 	}
 
 	public void setNumeroSalleDecisive(int numeroSalleDecisive) {
-		this.numeroSalleDecisive = numeroSalleDecisive;
+		this.numeroSalleDecisive = numeroSalleDecisive-1;//index start at 1
 	}
 	
 	public boolean salleDecisive(Salle s) {
