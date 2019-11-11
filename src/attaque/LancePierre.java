@@ -1,5 +1,7 @@
 package attaque;
 
+import protagoniste.ZoneDeCombat;
+
 public class LancePierre extends Arme{
 
 	public static final int DEGATS = 10;
@@ -7,5 +9,7 @@ public class LancePierre extends Arme{
 	
 	public LancePierre() {
 		super(DEGATS, NAME);
+		this.getZoneDeCombat().add(ZoneDeCombat.AERIEN);
+		this.getZoneDeCombat().add(ZoneDeCombat.TERRESTRE);
 	}
 }

@@ -1,5 +1,7 @@
 package attaque;
 
+import protagoniste.ZoneDeCombat;
+
 public class Arc extends Arme{
 
 	public static final int DEGATS = 50;
@@ -10,6 +12,9 @@ public class Arc extends Arme{
 	public Arc(int nbFlechesRestantes) {
 		super(DEGATS, NAME);
 		this.nbFlechesRestantes = nbFlechesRestantes;
+		this.getZoneDeCombat().add(ZoneDeCombat.AQUATIQUE);
+		this.getZoneDeCombat().add(ZoneDeCombat.AERIEN);
+		this.getZoneDeCombat().add(ZoneDeCombat.TERRESTRE);
 	}
 	
 	@Override

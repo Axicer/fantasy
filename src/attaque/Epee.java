@@ -1,5 +1,7 @@
 package attaque;
 
+import protagoniste.ZoneDeCombat;
+
 public class Epee extends Arme{
 
 	public static final int DEGATS = 80;
@@ -10,6 +12,8 @@ public class Epee extends Arme{
 	public Epee(String nomEpee) {
 		super(DEGATS, NAME);
 		this.nomEpee = nomEpee;
+		this.getZoneDeCombat().add(ZoneDeCombat.AQUATIQUE);
+		this.getZoneDeCombat().add(ZoneDeCombat.TERRESTRE);
 	}
 	
 }
