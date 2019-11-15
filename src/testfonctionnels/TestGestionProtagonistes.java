@@ -11,6 +11,7 @@ import attaque.LameAcier;
 import attaque.Lave;
 import attaque.Morsure;
 import attaque.PicsDeGlace;
+import attaque.Pouvoir;
 import attaque.Tornade;
 import attaque.Tranchant;
 import bataille.Bataille;
@@ -57,7 +58,7 @@ public class TestGestionProtagonistes {
 		cramombre.rejointBataille(bataille);
 
 		Camp<Homme> campsHumain = bataille.getCampHumains();
-		Camp<Monstre<?>> campsMonstre = bataille.getCampMonstres();
+		Camp<Monstre<? extends Pouvoir>> campsMonstre = bataille.getCampMonstres();
 
 		System.out.println("**** TP2 ****");
 		System.out.println("\ncamps des humains :\n" + campsHumain);
@@ -89,7 +90,7 @@ public class TestGestionProtagonistes {
 				new PicsDeGlace(10), new Tornade(1));
 		givrogolem.rejointBataille(bataille);
 		
-		NavigableSet<Monstre<?>> monstres = aideEcrivain.getMonstresDeFeu();
+		NavigableSet<Monstre<? extends Pouvoir>> monstres = aideEcrivain.getMonstresDeFeu();
 		String affichage = affichageMonstres(monstres);
 		System.out.println("\nmonstres de feu :\n" + affichage);
 

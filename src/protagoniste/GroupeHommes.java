@@ -8,6 +8,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 import attaque.Arme;
+import attaque.Pouvoir;
 import bataille.Bataille;
 
 public class GroupeHommes {
@@ -73,9 +74,9 @@ public class GroupeHommes {
 	
 	private final class ComparateurArmes implements Comparator<Arme>{
 
-		private Monstre<?> monstre;
+		private Monstre<? extends Pouvoir> monstre;
 		
-		public ComparateurArmes(Monstre<?> monstre) {
+		public ComparateurArmes(Monstre<? extends Pouvoir> monstre) {
 			this.monstre = monstre;
 		}
 		

@@ -16,6 +16,7 @@ import bataille.Salle;
 import protagoniste.Domaine;
 import protagoniste.Monstre;
 import protagoniste.ZoneDeCombat;
+import protagoniste.ZoneDeCombatNonCompatibleException;
 
 public class testGestionGrotte {
 
@@ -35,27 +36,32 @@ public class testGestionGrotte {
 		Monstre<Feu> cramombre = new Monstre<>("cramombre", 80, ZoneDeCombat.TERRESTRE, Domaine.FEU, new BouleDeFeu(2), new Lave(1), new Eclair(1));
 	
 		Grotte grotte = new Grotte();
-		grotte.ajouterSalle(ZoneDeCombat.TERRESTRE, guillotimort);
-		grotte.ajouterSalle(ZoneDeCombat.AERIEN, dragotenebre);
-		grotte.ajouterSalle(ZoneDeCombat.TERRESTRE, cramombre);
-		grotte.ajouterSalle(ZoneDeCombat.TERRESTRE, givrogolem);
-		grotte.ajouterSalle(ZoneDeCombat.AERIEN, tableauVampirien);
-		grotte.ajouterSalle(ZoneDeCombat.AQUATIQUE, aqualave);
-		grotte.ajouterSalle(ZoneDeCombat.AQUATIQUE, marinsangant);
-		grotte.ajouterSalle(ZoneDeCombat.AQUATIQUE, requispectre);
-		grotte.ajouterSalle(ZoneDeCombat.AERIEN, soufflemort);
-		
-		grotte.configurerAcces(1, 2, 3);
-		grotte.configurerAcces(2, 1, 3, 5);
-		grotte.configurerAcces(3, 2, 4);
-		grotte.configurerAcces(4, 3, 5, 9);
-		grotte.configurerAcces(5, 2, 4, 6, 8);
-		grotte.configurerAcces(6, 1, 5, 7);
-		grotte.configurerAcces(7, 6, 8);
-		grotte.configurerAcces(8, 5, 7, 9);
-		grotte.configurerAcces(9, 4, 8);
-		
-		grotte.setNumeroSalleDecisive(9);
+		try {
+			grotte.ajouterSalle(ZoneDeCombat.TERRESTRE, guillotimort);
+			grotte.ajouterSalle(ZoneDeCombat.AERIEN, dragotenebre);
+			grotte.ajouterSalle(ZoneDeCombat.TERRESTRE, cramombre);
+			grotte.ajouterSalle(ZoneDeCombat.TERRESTRE, givrogolem);
+			grotte.ajouterSalle(ZoneDeCombat.AERIEN, tableauVampirien);
+			grotte.ajouterSalle(ZoneDeCombat.AQUATIQUE, aqualave);
+			grotte.ajouterSalle(ZoneDeCombat.AQUATIQUE, marinsangant);
+			grotte.ajouterSalle(ZoneDeCombat.AQUATIQUE, requispectre);
+			grotte.ajouterSalle(ZoneDeCombat.AERIEN, soufflemort);
+
+			grotte.configurerAcces(1, 2, 3);
+			grotte.configurerAcces(2, 1, 3, 5);
+			grotte.configurerAcces(3, 2, 4);
+			grotte.configurerAcces(4, 3, 5, 9);
+			grotte.configurerAcces(5, 2, 4, 6, 8);
+			grotte.configurerAcces(6, 1, 5, 7);
+			grotte.configurerAcces(7, 6, 8);
+			grotte.configurerAcces(8, 5, 7, 9);
+			grotte.configurerAcces(9, 4, 8);
+			
+			grotte.setNumeroSalleDecisive(9);
+		}catch(ZoneDeCombatNonCompatibleException e) {
+			e.printStackTrace();
+			return;
+		}
 		
 		System.out.println("plan de la grotte :\n"+grotte.afficherPlanGrotte());
 		

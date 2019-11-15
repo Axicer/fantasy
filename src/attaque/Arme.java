@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 import protagoniste.ZoneDeCombat;
 
-public abstract class Arme extends ForceDeCombat{
+public abstract class Arme extends ForceDeCombat implements Orderable<Arme>{
 
 	private HashSet<ZoneDeCombat> ZoneDeCombat;
 	
@@ -17,4 +17,12 @@ public abstract class Arme extends ForceDeCombat{
 		return ZoneDeCombat;
 	}
 	
+	@Override
+	public int compareTo(Arme o) {
+		Boolean ob = o.isOperationnel();
+		Boolean b = isOperationnel();
+		int compare = ob.compareTo(b);
+		
+		return compare != 0 ? compare : getNom().compareTo(o.getNom());
+	}
 }

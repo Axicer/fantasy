@@ -8,8 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import attaque.Pouvoir;
 import protagoniste.Monstre;
 import protagoniste.ZoneDeCombat;
+import protagoniste.ZoneDeCombatNonCompatibleException;
 
 public class Grotte {
 
@@ -24,10 +26,13 @@ public class Grotte {
 		sallesExplorees = new HashSet<>();
 	}
 
-	public void ajouterSalle(ZoneDeCombat zoneDeCombat, Monstre<?>... monstres) {
+	public void ajouterSalle(ZoneDeCombat zoneDeCombat, Monstre<?>... monstres) throws ZoneDeCombatNonCompatibleException {
 		Salle s = new Salle(planGrotte.size(), zoneDeCombat);
 		Bataille b = new Bataille();
-		for (Monstre<?> m : monstres) {
+		for (Monstre<? extends Pouvoir> m : monstres) {
+			if(!m.getZoneDeCombat().equals(zoneDeCombat)) {
+				throw new ZoneDeCombatNonCompatibleException();
+			}
 			b.ajouter(m);
 		}
 		planGrotte.put(s, new ArrayList<>());
@@ -44,8 +49,8 @@ public class Grotte {
 				affichage.append(" vers la salle " + access);
 			}
 			Bataille bataille = batailles.get(salle);
-			Camp<Monstre<?>> camp = bataille.getCampMonstres();
-			Monstre<?> monstre = camp.selectionner();
+			Camp<Monstre<? extends Pouvoir>> camp = bataille.getCampMonstres();
+			Monstre<? extends Pouvoir> monstre = camp.selectionner();
 			if (camp.nbCombattants() > 1) {
 				affichage.append("\n" + camp.nbCombattants() + " monstres de type ");
 			} else {

@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.EnumMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import attaque.Arme;
+import attaque.Pouvoir;
 import bataille.Bataille;
 
 public class Homme extends EtreVivant {
@@ -22,8 +24,8 @@ public class Homme extends EtreVivant {
 		}
 	}
 
-	public Arme choisirArme(Monstre<?> m) {
-		return armes.get(m.getZoneDeCombat()).stream().sorted(new Comparator<Arme>() {
+	public Arme choisirArme(Monstre<? extends Pouvoir> m) {
+		Comparator<Arme> comp = new Comparator<Arme>() {
 			@Override
 			public int compare(Arme A, Arme B) {
 				if(!A.isOperationnel() || !B.isOperationnel()) {
@@ -38,7 +40,11 @@ public class Homme extends EtreVivant {
 				
 				return compare != 0 ? compare : A.getNom().compareTo(B.getNom());
 			}
-		}).filter(a -> a.getPointDeDegat() <= m.getForceDeVie()).findFirst().orElse(null);
+		};
+		List<Arme> armestriee = armes.get(m.getZoneDeCombat()).stream().sorted(comp).collect(Collectors.toList());
+		return armestriee.stream().filter(a -> a.getPointDeDegat() <= m.getForceDeVie()).count() != 0 ?
+				armestriee.stream().filter(a -> a.getPointDeDegat() <= m.getForceDeVie()).findFirst().orElse(null)
+				: armestriee.size() != 0 ? armestriee.get(armestriee.size()-1) : null;
 	}
 	
 	public void ajouterArmes(Arme... ar) {
